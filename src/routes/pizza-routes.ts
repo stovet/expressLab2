@@ -14,12 +14,14 @@ pizzaRoutes.get('/pizza-routes', function(req, res){
 
 pizzaRoutes.get('/review', function(req, res){
     res.render('review');
-})
+});
 pizzaRoutes.post('/review', function(req, res){
     let name: string = req.body.name as string;
     let comment: string = req.body.comment as string;
     let rating: number = parseInt(req.body.rating as string);
     res.render('results', {name, comment, rating});
-})
-
+});
+pizzaRoutes.get('/build', function(req, res){
+    res.render('build');
+});
 export default pizzaRoutes;
