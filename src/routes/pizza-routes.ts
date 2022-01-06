@@ -12,4 +12,8 @@ pizzaRoutes.get('/pizza-routes', function(req, res){
     res.render('specialty', {name, price})
 });
 
+pizzaRoutes.get('/review', function(req, res){
+    res.render('review');
+})
+
 export default pizzaRoutes;
