@@ -38,7 +38,7 @@ pizzaRoutes.post('/build', function(req, res){
     if(size === "small"){
         price += 7 + toppings * 0.50;
         if(gluten){
-            price += 2
+            price += 2  
         }
         //res.render('build-price', {price})
         //res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
@@ -58,6 +58,7 @@ pizzaRoutes.post('/build', function(req, res){
     if(price >= 15.00){
         freeDelivery = "Because your order meets the $15.00 minimum, you get FREE DELIVERY!"
     }
+    price.toFixed(2);
     res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
 });
 export default pizzaRoutes;
