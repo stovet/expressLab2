@@ -1,6 +1,9 @@
 import express from 'express';
 const pizzaRoutes = express.Router();
 
+
+let pizzaToppings: string[] = ["Pepperoni", "Sausage", "Chicken", "Mushroom", "Olive", "Green Pepper", "Onion", "Banana Pepper", "Anchovies", "Pineapple"]
+
 pizzaRoutes.get('/', function(req, res){
     res.render('home')
 });
@@ -22,7 +25,8 @@ pizzaRoutes.post('/review', function(req, res){
     res.render('results', {name, comment, rating});
 });
 pizzaRoutes.get('/build', function(req, res){
-    res.render('build');
+    
+    res.render('build', {pizzaToppings});
 });
 
 pizzaRoutes.post('/build', function(req, res){
@@ -40,20 +44,16 @@ pizzaRoutes.post('/build', function(req, res){
         if(gluten){
             price += 2  
         }
-        //res.render('build-price', {price})
-        //res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
     } else if(size === "medium"){
         price = 10 + toppings * 1;
         if(gluten){
             price += 2;
         }
-        //res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
     } else if(size === "large"){
         price = 12 + toppings * 1.25;
         if(gluten){
             price += 2;
         }
-       // res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
     }
     if(price >= 15.00){
         freeDelivery = "Because your order meets the $15.00 minimum, you get FREE DELIVERY!"

@@ -19,16 +19,9 @@
         <label for="toppings">How many toppings?</label>
         <input type="number" name="toppings" id="toppings">
         <ul>
-            <li>Pepperoni</li>
-            <li>Sausage</li>
-            <li>Chicken</li>
-            <li>Mushroom</li>
-            <li>Olive</li>
-            <li>Green Pepper</li>
-            <li>Onion</li>
-            <li>Banana Pepper</li>
-            <li>Anchovies</li>
-            <li>Pineapple</li>
+            {{#each pizzaToppings}}
+            <li>{{this}}</li>
+            {{/each}}
         </ul>
         <input type="checkbox" name="gluten" id="gluten">
         <label for="gluten">Gluten-Free Crust? ($2.00 extra</label>
