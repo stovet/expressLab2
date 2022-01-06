@@ -24,4 +24,32 @@ pizzaRoutes.post('/review', function(req, res){
 pizzaRoutes.get('/build', function(req, res){
     res.render('build');
 });
+
+pizzaRoutes.post('/build', function(req, res){
+    let size: string = req.body.size as string;
+    let toppings: number = parseInt(req.body.toppings as string);
+    let gluten: boolean = Boolean(req.body.gluten as string);
+    let comment: string = req.body.comment as string;
+    let price: number = 0;
+    if(!toppings){
+        toppings = 0;
+    }
+    if(size === "Small"){
+        price = 7 + toppings * 0.50;
+        if(gluten){
+            price += 2
+        }
+    } else if(size === "Medium"){
+        price = 10 + toppings * 1;
+        if(gluten){
+            price += 2;
+        }
+    } else if(size === "Large"){
+        price = 12 + toppings * 1.25;
+        if(gluten){
+            price += 2;
+        }
+    }
+    res.render('build-price', {size, toppings, gluten, comment, price});
+});
 export default pizzaRoutes;
