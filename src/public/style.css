@@ -1,4 +1,15 @@
 img {
     width: 200px;
-    height: 200px;
+   height: 200px;
+   border-radius: 10%;
+}
+ul{
+    list-style-type: none;
+}
+a:hover {
+    font-size: 18px;
+}
+body {
+    background-color: rgb(114, 228, 228);
+    font-family: 'Permanent Marker', cursive;
 }
