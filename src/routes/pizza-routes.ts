@@ -30,7 +30,8 @@ pizzaRoutes.post('/build', function(req, res){
     let toppings: number = parseInt(req.body.toppings as string);
     let gluten: boolean = Boolean(req.body.gluten as string);
     let comment: string = req.body.comment as string;
-    let price: number = 0;
+    let price: number = parseFloat(req.body.price as string);
+    let freeDelivery: string = "";
     if(!toppings){
         toppings = 0;
     }
@@ -39,17 +40,23 @@ pizzaRoutes.post('/build', function(req, res){
         if(gluten){
             price += 2
         }
+        //res.render('build-price', {price})
     } else if(size === "Medium"){
         price = 10 + toppings * 1;
         if(gluten){
             price += 2;
         }
+       
     } else if(size === "Large"){
         price = 12 + toppings * 1.25;
         if(gluten){
             price += 2;
         }
+         
     }
-    res.render('build-price', {size, toppings, gluten, comment, price});
+    if(price >= 15.00){
+        let freeDelivery = "Because your order meets the $15.00 minimum, you get FREE DELIVERY!"
+    }
+    res.render('build-price', {size, toppings, gluten, comment, price, freeDelivery});
 });
 export default pizzaRoutes;
